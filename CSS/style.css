@@ -1,0 +1,113 @@
+
+/*POSICIONAMIENTO GENERAL DE LAS CAJAS*/
+
+.cajitas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 3px;  
+    
+}
+ 
+/*EDITO CADA CONTENIDO DE LA CAJA DE FORMA GENERAL*/
+.cajitas div{
+    width: 100%;
+    height: 100vh;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    font-size: 40px;
+    overflow: hidden; /*HE TENIDO EL PROBLEMA DE QUE LA FIGURA GEOMETRICA CRECIA MÁS ALLÁ DE LA CAJA Y LO HE CONSEGUIDO SOLUCIONAR AL FINAL CON ESTO*/
+    
+  }
+
+/*EDITO CADA CAJITA DE FORMA ESPECIFICA PARA SU COLOR Y SU KEYFRAME*/
+
+.div1 {
+  
+    background-color: #244F75; /*COLOR*/
+    position: relative;/*POSICION RELATIVA PARA PODER EJECUTAR EL @KEYFRAME/ANIMACION*/
+    animation-name: IT;/*NOMBRE DE LA ANIMACIÓN QUE VA DESPUÉS DEL @KEYFRAME*/
+    animation-duration: 1s;/*DURACIÓN DE LA ANIMACION*/
+    animation-iteration-count:1; /*EL NUMERO DE VECES QUE EJECUTARÁ LA ANIMACIÓN*/
+   
+}
+.div2 {
+  
+    background-color: #60BFBF;
+    animation-name: A;
+    position: relative;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    
+}
+.div3 {
+ 
+    background-color: #8C4B7E;
+    animation-name: CA;
+    position: relative;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+.div4 {
+  
+    background-color: #F8BB44;
+    animation-name: DE;
+    position: relative;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+.div5 {
+ 
+    background-color: #F24B4B;
+    animation-name: MY;
+    position: relative;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+/*ANIMACIONES DE MOVIMIENTO DE CADA CAJA CON SU RESPECTIVO NOMBRE ASIGNADO CON ANIMATION-NAME*/
+@keyframes IT{ /* HE HECHO LA ANIMACIÓN DE ESTA FORMA. CADA IMAGEN SUBE DE MARGEN 400PX MÁS CON EL FIN DE QUE APAREZCAN MÁS TARDE UNA POR UNA*/
+
+  from{right: 400px;}
+  to{ right:0px;}
+}
+@keyframes A{
+
+  from{top: 800px;}
+  to{ top:0px;}
+}@keyframes CA{
+
+  from{bottom: 1200px;}
+  to{ bottom:0px;}
+}@keyframes DE{
+
+  from{top: 1600px;}
+  to{ top:0px;}
+}@keyframes MY{
+
+  from{left: 2000px;}
+  to{ left:0px;}
+}
+/*PROCEDO A CREAR EL RECTANGULO QUE HAY EN MEDIO DE CADA CAJITA*/
+
+.cajitas div::before{ /*PSEUDOSELECTOR BEFORE */
+  content: "";  /* SE CREA UN CONTENIDO VACIO QUE EN REALIDAD SERÁ EL BACKGROUND*/
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0.05;
+  transform: skew(30deg); /* HACE EL BACKGROUND COLOR DE LA FORMA QUE INDICA EL EJERCICIO*/
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  
+
+  }
+
+/*HOVER PARA CREAR LA TRANSICIÓN CUANDO EL CURSOR PASE POR ENCIMA DE LA CAJA*/
+    .cajitas div:hover::before { 
+      transform: skew(0deg) scale(3) translate(0, 0);
+      opacity: 0.1;} /*LA OPACIDAD SUBE CUANDO PASAMOS EL CURSOR POR ENCIMA*/
